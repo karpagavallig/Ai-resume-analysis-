@@ -1,0 +1,725 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ResumeAI - Analysis Result</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #eef2ff, #f8fafc);
+            color: #1e293b;
+        }
+
+        .navbar {
+            height: 70px;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 7%;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+            color: #4f46e5;
+        }
+
+        .logo i {
+            margin-right: 8px;
+        }
+
+        .user-area {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logout {
+            text-decoration: none;
+            color: #ef4444;
+            font-weight: bold;
+        }
+
+        .container {
+            width: 92%;
+            max-width: 1200px;
+            margin: 40px auto;
+        }
+
+        .title {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .title h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .title p {
+            color: #64748b;
+        }
+
+        /* SCORE */
+
+        .score-box {
+            background: white;
+            border-radius: 22px;
+            padding: 35px;
+            display: flex;
+            align-items: center;
+            gap: 45px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+            margin-bottom: 25px;
+        }
+
+        .score {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            border: 12px solid #4f46e5;
+            background: #eef2ff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            flex-shrink: 0;
+        }
+
+        .score h2 {
+            margin: 0;
+            font-size: 42px;
+            color: #4f46e5;
+        }
+
+        .score span {
+            color: #64748b;
+        }
+
+        .score-content h2 {
+            margin-top: 0;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 8px 18px;
+            border-radius: 25px;
+            background: #dcfce7;
+            color: #15803d;
+            font-weight: bold;
+        }
+
+        /* CARDS */
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+
+        .card {
+            background: white;
+            padding: 28px;
+            border-radius: 18px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+        }
+
+        .card h2 {
+            margin-top: 0;
+            color: #111827;
+            font-size: 21px;
+        }
+
+        .card h2 i {
+            color: #4f46e5;
+            margin-right: 8px;
+        }
+
+        .card ul {
+            padding-left: 20px;
+        }
+
+        .card li {
+            margin-bottom: 12px;
+            line-height: 1.5;
+        }
+
+        /* SKILLS */
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill {
+            background: #eef2ff;
+            color: #4338ca;
+            padding: 9px 15px;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .missing {
+            background: #fff7ed;
+            color: #c2410c;
+        }
+
+        /* DETAILS */
+
+        .details {
+            background: white;
+            padding: 28px;
+            border-radius: 18px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+            margin-bottom: 25px;
+        }
+
+        .details h2 {
+            margin-top: 0;
+        }
+
+        .detail-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .detail {
+            background: #f8fafc;
+            padding: 18px;
+            border-radius: 12px;
+        }
+
+        .detail small {
+            display: block;
+            color: #64748b;
+            margin-bottom: 7px;
+        }
+
+        .detail strong {
+            word-break: break-word;
+        }
+
+        /* BUTTONS */
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 35px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 15px 24px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            transition: 0.2s;
+        }
+
+        .download {
+            background: #16a34a;
+            color: white;
+        }
+
+        .download:hover {
+            background: #15803d;
+        }
+
+        .improve {
+            background: #4f46e5;
+            color: white;
+        }
+
+        .improve:hover {
+            background: #4338ca;
+        }
+
+        .back {
+            background: #111827;
+            color: white;
+        }
+
+        .back:hover {
+            background: #000;
+        }
+
+        /* MOBILE */
+
+        @media(max-width: 800px) {
+
+            .score-box {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            .detail-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .user-area span {
+                display: none;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- NAVBAR -->
+
+<div class="navbar">
+
+    <div class="logo">
+
+        <i class="fa-solid fa-file-circle-check"></i>
+
+        ResumeAI
+
+    </div>
+
+
+    <div class="user-area">
+
+        <span>
+
+            <i class="fa-solid fa-user"></i>
+
+            {{ username }}
+
+        </span>
+
+
+        <a href="{{ url_for('logout') }}"
+           class="logout">
+
+            Logout
+
+        </a>
+
+    </div>
+
+</div>
+
+
+<div class="container">
+
+
+    <!-- TITLE -->
+
+    <div class="title">
+
+        <h1>
+            Resume Analysis Complete
+        </h1>
+
+        <p>
+            Your resume has been successfully analyzed.
+        </p>
+
+    </div>
+
+
+    <!-- ATS SCORE -->
+
+    <div class="score-box">
+
+        <div class="score">
+
+            <h2>
+                {{ result.ats_score }}
+            </h2>
+
+            <span>
+                / 100
+            </span>
+
+        </div>
+
+
+        <div class="score-content">
+
+            <h2>
+                ATS Compatibility Score
+            </h2>
+
+            <p>
+                This score represents how well your resume
+                is structured for Applicant Tracking Systems.
+            </p>
+
+            <span class="badge">
+
+                <i class="fa-solid fa-chart-line"></i>
+
+                {{ result.strength }}
+
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <!-- DETAILS -->
+
+    <div class="details">
+
+        <h2>
+
+            <i class="fa-solid fa-circle-info"></i>
+
+            Resume Details
+
+        </h2>
+
+
+        <div class="detail-grid">
+
+            <div class="detail">
+
+                <small>Resume File</small>
+
+                <strong>
+                    {{ filename }}
+                </strong>
+
+            </div>
+
+
+            <div class="detail">
+
+                <small>Email</small>
+
+                <strong>
+                    {{ result.email }}
+                </strong>
+
+            </div>
+
+
+            <div class="detail">
+
+                <small>Phone</small>
+
+                <strong>
+                    {{ result.phone }}
+                </strong>
+
+            </div>
+
+
+            <div class="detail">
+
+                <small>Word Count</small>
+
+                <strong>
+                    {{ result.word_count }}
+                </strong>
+
+            </div>
+
+
+            <div class="detail">
+
+                <small>Skills Found</small>
+
+                <strong>
+                    {{ result.skills|length }}
+                </strong>
+
+            </div>
+
+
+            <div class="detail">
+
+                <small>Sections Found</small>
+
+                <strong>
+                    {{ result.sections|length }}
+                </strong>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- CARDS -->
+
+    <div class="grid">
+
+
+        <!-- STRENGTHS -->
+
+        <div class="card">
+
+            <h2>
+
+                <i class="fa-solid fa-thumbs-up"></i>
+
+                Resume Strengths
+
+            </h2>
+
+            <ul>
+
+                {% for item in result.strengths %}
+
+                <li>
+                    {{ item }}
+                </li>
+
+                {% endfor %}
+
+            </ul>
+
+        </div>
+
+
+        <!-- SKILLS -->
+
+        <div class="card">
+
+            <h2>
+
+                <i class="fa-solid fa-code"></i>
+
+                Detected Skills
+
+            </h2>
+
+
+            <div class="skills">
+
+                {% for skill in result.skills %}
+
+                <span class="skill">
+                    {{ skill }}
+                </span>
+
+                {% else %}
+
+                <p>
+                    No skills detected.
+                </p>
+
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+
+        <!-- MISSING SKILLS -->
+
+        <div class="card">
+
+            <h2>
+
+                <i class="fa-solid fa-triangle-exclamation"></i>
+
+                Missing / Recommended Skills
+
+            </h2>
+
+
+            <div class="skills">
+
+                {% for skill in result.missing_skills %}
+
+                <span class="skill missing">
+                    {{ skill }}
+                </span>
+
+                {% else %}
+
+                <p>
+                    No missing skills detected.
+                </p>
+
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+
+        <!-- SECTIONS -->
+
+        <div class="card">
+
+            <h2>
+
+                <i class="fa-solid fa-layer-group"></i>
+
+                Resume Sections
+
+            </h2>
+
+
+            <div class="skills">
+
+                {% for section in result.sections %}
+
+                <span class="skill">
+                    {{ section }}
+                </span>
+
+                {% else %}
+
+                <p>
+                    No sections detected.
+                </p>
+
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+
+        <!-- SUGGESTIONS -->
+
+        <div class="card">
+
+            <h2>
+
+                <i class="fa-solid fa-lightbulb"></i>
+
+                AI Suggestions
+
+            </h2>
+
+            <ul>
+
+                {% for suggestion in result.suggestions %}
+
+                <li>
+                    {{ suggestion }}
+                </li>
+
+                {% endfor %}
+
+            </ul>
+
+        </div>
+
+
+        <!-- IMPROVEMENTS -->
+
+        <div class="card">
+
+            <h2>
+
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+
+                Professional Improvements
+
+            </h2>
+
+            <ul>
+
+                {% for improvement in result.improvements %}
+
+                <li>
+                    {{ improvement }}
+                </li>
+
+                {% endfor %}
+
+            </ul>
+
+        </div>
+
+    </div>
+
+
+    <!-- BUTTONS -->
+
+    <div class="buttons">
+
+
+        <!-- DOWNLOAD -->
+
+        <a href="{{ url_for('download_report') }}"
+           class="btn download">
+
+            <i class="fa-solid fa-file-pdf"></i>
+
+            Download PDF Report
+
+        </a>
+
+
+        <!-- IMPROVE -->
+
+        <a href="{{ url_for('rewrite') }}"
+           class="btn improve">
+
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+
+            Improve Resume
+
+        </a>
+
+
+        <!-- BACK -->
+
+        <a href="{{ url_for('dashboard') }}"
+           class="btn back">
+
+            <i class="fa-solid fa-arrow-left"></i>
+
+            Analyze Another Resume
+
+        </a>
+
+    </div>
+
+
+</div>
+
+
+</body>
+
+</html>
+
+

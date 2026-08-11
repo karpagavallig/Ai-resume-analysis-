@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ResumeAI Dashboard</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/dashboard.css') }}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+
+    <div class="logo">
+        <div class="logo-icon">R</div>
+        <span>Resume<span class="logo-ai">AI</span></span>
+    </div>
+
+    <div class="nav-links">
+        <a href="{{ url_for('dashboard') }}" class="active">Dashboard</a>
+        <a href="#analysis">Analysis</a>
+        <a href="#skills">Skills</a>
+        <a href="#suggestions">Suggestions</a>
+    </div>
+
+    <div class="profile">
+        <div class="profile-circle">
+            {{ session.get('username', 'U')[0]|upper }}
+        </div>
+
+        <span>
+            {{ session.get('username', 'User') }}
+        </span>
+
+        <a href="{{ url_for('logout') }}" class="logout-btn">
+            Logout
+        </a>
+    </div>
+
+</nav>
+
+
+<!-- MAIN CONTENT -->
+<main class="container">
+
+    <!-- HERO -->
+    <section class="hero">
+
+        <div class="hero-text">
+
+            <span class="welcome">
+                WELCOME BACK 👋
+            </span>
+
+            <h1>
+                Build a Resume That
+                <span>Gets Noticed.</span>
+            </h1>
+
+            <p>
+                Upload your resume and let ResumeAI analyze it,
+                calculate your ATS score, detect skills and give
+                personalized improvement suggestions.
+            </p>
+
+        </div>
+
+        <div class="hero-icon">
+            🧠
+        </div>
+
+    </section>
+
+
+    <!-- RESUME UPLOAD -->
+    <section class="upload-card">
+
+        <div class="section-title">
+            <div class="title-icon">📄</div>
+
+            <div>
+                <h2>Analyze Your Resume</h2>
+                <p>Upload your PDF or DOCX resume to get started.</p>
+            </div>
+        </div>
+
+        <form action="{{ url_for('analyze') }}"
+              method="POST"
+              enctype="multipart/form-data">
+
+            <div class="upload-area">
+
+                <div class="upload-icon">
+                    ⬆
+                </div>
+
+                <h3>Upload your resume</h3>
+
+                <p>
+                    Drag & drop your resume here or choose a file
+                </p>
+
+                <input type="file"
+                       name="resume"
+                       id="resume"
+                       accept=".pdf,.docx"
+                       required>
+
+                <label for="resume" class="choose-btn">
+                    Choose Resume
+                </label>
+
+                <p class="file-info">
+                    Supported formats: PDF, DOCX
+                </p>
+
+            </div>
+
+            <button type="submit" class="analyze-btn">
+                🤖 Analyze Resume
+            </button>
+
+        </form>
+
+    </section>
+
+
+    <!-- FEATURE CARDS -->
+    <section class="features" id="analysis">
+
+        <div class="feature-card">
+
+            <div class="feature-icon purple">
+                📊
+            </div>
+
+            <h3>ATS Score</h3>
+
+            <p>
+                Get an ATS-friendly score based on resume
+                structure, keywords and job relevance.
+            </p>
+
+            <div class="feature-link">
+                View Score →
+            </div>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon pink">
+                💻
+            </div>
+
+            <h3>Skills Detection</h3>
+
+            <p>
+                Automatically identify technical and
+                professional skills from your resume.
+python <app class="py"></app>

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login - ResumeAI</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+    <style>
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: #080d1c;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        .navbar {
+            padding: 20px 7%;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .container {
+            min-height: 80vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .login-box {
+            width: 400px;
+            padding: 40px;
+            border-radius: 20px;
+            background: #111827;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #94a3b8;
+            margin-bottom: 30px;
+        }
+
+        .error {
+            padding: 12px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            background: #451a1a;
+            color: #fca5a5;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #cbd5e1;
+        }
+
+        .input {
+            margin-bottom: 20px;
+        }
+
+        input {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 14px;
+            border-radius: 8px;
+            border: 1px solid #334155;
+            background: #020617;
+            color: white;
+            font-size: 15px;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #6366f1;
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #6366f1, #06b6d4);
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .login-btn:hover {
+            opacity: 0.9;
+        }
+
+        /* CREATE ACCOUNT */
+
+        .create-account {
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid #334155;
+            text-align: center;
+            color: #94a3b8;
+        }
+
+        .create-account a {
+            color: #818cf8;
+            font-weight: bold;
+            text-decoration: none;
+            margin-left: 5px;
+        }
+
+        .create-account a:hover {
+            text-decoration: underline;
+        }
+
+        .home {
+            display: block;
+            margin-top: 20px;
+            text-align: center;
+            color: #64748b;
+            text-decoration: none;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="navbar">
+    📄 ResumeAI
+</div>
+
+
+<div class="container">
+
+    <div class="login-box">
+
+        <h1>Welcome Back</h1>
+
+        <p class="subtitle">
+            Login to your ResumeAI account
+        </p>
+
+
+        {% if error %}
+
+        <div class="error">
+            {{ error }}
+        </div>
+
+        {% endif %}
+
+
+        <form action="/login" method="POST">
+
+
+            <div class="input">
+
+                <label>Email Address</label>
+
+                <input
+                    type="email"
+                    name="email"
+                    placeholder="Enter your email"
+                    required
+                >
+
+            </div>
+
+
+            <div class="input">
+
+                <label>Password</label>
+
+                <input
+                    type="password"
+                    name="password"
+                    placeholder="Enter your password"
+                    required
+                >
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="login-btn">
+
+                Login
+
+            </button>
+
+
+        </form>
+
+
+        <!-- THIS IS CREATE ACCOUNT -->
+
+        <div class="create-account">
+
+            Don't have an account?
+
+            <a href="/register">
+                Create Account
+            </a>
+
+        </div>
+
+
+        <a href="/" class="home">
+            ← Back to Home
+        </a>
+
+
+    </div>
+
+</div>
+
+
+</body>
+
+</html>

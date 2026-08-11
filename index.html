@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ResumeAI | Smart Resume Analyzer</title>
+
+    <!-- Main CSS -->
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+
+<body>
+
+    <!-- =========================
+         NAVIGATION BAR
+         ========================= -->
+
+    <nav>
+
+        <div class="logo">
+
+            <div class="logo-icon">
+                <i class="fa-solid fa-file-circle-check"></i>
+            </div>
+
+            <span>ResumeAI</span>
+
+        </div>
+
+
+        <div class="nav-links">
+
+            <a href="#features">
+                Features
+            </a>
+
+            <a href="#how-it-works">
+                How it Works
+            </a>
+
+            <a href="/login" class="login-btn">
+                Login
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- =========================
+         HERO SECTION
+         ========================= -->
+
+    <section class="hero">
+
+        <!-- LEFT SIDE -->
+
+        <div class="hero-content">
+
+            <div class="badge">
+
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+
+                AI-Powered Resume Analysis
+
+            </div>
+
+
+            <h1>
+
+                Build a resume that
+
+                <span>
+                    gets noticed.
+                </span>
+
+            </h1>
+
+
+            <p class="hero-text">
+
+                Analyze your resume with AI, discover missing skills,
+                improve your ATS score, and get personalized
+                recommendations to make your resume stronger.
+
+            </p>
+
+        </div>
+
+
+        <!-- RIGHT SIDE -->
+
+        <div class="upload-card">
+
+            <h2>
+                Analyze Your Resume
+            </h2>
+
+
+            <p>
+                Upload your resume and let our AI analyze it.
+            </p>
+
+
+            <!-- Resume Upload Form -->
+
+            <form
+                action="/analyze"
+                method="POST"
+                enctype="multipart/form-data"
+                id="resumeForm"
+            >
+
+                <!-- Upload Area -->
+
+                <label
+                    for="resumeFile"
+                    class="drop-area"
+                >
+
+                    <div class="upload-icon">
+
+                        <i class="fa-solid fa-cloud-arrow-up"></i>
+
+                    </div>
+
+
+                    <h3>
+                        Upload your resume
+                    </h3>
+
+
+                    <span>
+                        Click here to select PDF or DOCX
+                    </span>
+
+
+                    <!-- Selected File Name -->
+
+                    <div
+                        class="file-name"
+                        id="fileName"
+                    ></div>
+
+                </label>
+
+
+                <!-- Hidden File Input -->
+
+                <input
+                    type="file"
+                    id="resumeFile"
+                    name="resume"
+                    accept=".pdf,.docx"
+                    required
+                >
+
+
+                <!-- Analyze Button -->
+
+                <button
+                    type="submit"
+                    class="analyze-btn"
+                >
+
+                    <i class="fa-solid fa-magnifying-glass-chart"></i>
+
+                    Analyze Resume
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         FEATURES SECTION
+         ========================= -->
+
+    <section
+        class="features"
+        id="features"
+    >
+
+        <!-- Feature 1 -->
+
+        <div class="feature">
+
+            <i class="fa-solid fa-chart-line"></i>
+
+            <h3>
+                ATS Score
+            </h3>
+
+            <p>
+
+                Get a score from 0–100 to understand
+                how well your resume can perform
+                with Applicant Tracking Systems.
+
+            </p>
+
+        </div>
+
+
+        <!-- Feature 2 -->
+
+        <div class="feature">
+
+            <i class="fa-solid fa-code"></i>
+
+            <h3>
+                Skill Detection
+            </h3>
+
+            <p>
+
+                Automatically identify technical skills
+                and discover important skills missing
+                from your resume.
+
+            </p>
+
+        </div>
+
+
+        <!-- Feature 3 -->
+
+        <div class="feature">
+
+            <i class="fa-solid fa-lightbulb"></i>
+
+            <h3>
+                Smart Suggestions
+            </h3>
+
+            <p>
+
+                Receive personalized recommendations
+                to improve your resume and increase
+                its impact.
+
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         HOW IT WORKS
+         ========================= -->
+
+    <section
+        id="how-it-works"
+        class="features"
+    >
+
+        <div class="feature">
+
+            <i class="fa-solid fa-file-arrow-up"></i>
+
+            <h3>
+                1. Upload
+            </h3>
+
+            <p>
+                Upload your PDF or DOCX resume.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <i class="fa-solid fa-robot"></i>
+
+            <h3>
+                2. AI Analysis
+            </h3>
+
+            <p>
+                Our system analyzes your resume,
+                skills and important sections.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <i class="fa-solid fa-square-poll-vertical"></i>
+
+            <h3>
+                3. Get Results
+            </h3>
+
+            <p>
+                View your ATS score, strengths,
+                missing skills and suggestions.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         JAVASCRIPT
+         ========================= -->
+
+    <script
+        src="{{ url_for('static', filename='js/script.js') }}">
+    </script>
+
+</body>
+
+</html>

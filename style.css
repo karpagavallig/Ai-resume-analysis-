@@ -1,0 +1,557 @@
+/* ================================
+   AI RESUME ANALYZER - MAIN CSS
+   ================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Inter", sans-serif;
+    min-height: 100vh;
+    color: #ffffff;
+    background:
+        radial-gradient(
+            circle at 10% 20%,
+            rgba(99, 102, 241, 0.25),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 90% 80%,
+            rgba(14, 165, 233, 0.20),
+            transparent 30%
+        ),
+        #070b17;
+    overflow-x: hidden;
+}
+
+/* ================================
+   NAVBAR
+   ================================ */
+
+nav {
+    width: 100%;
+    padding: 22px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+    background: rgba(7, 11, 23, 0.65);
+    backdrop-filter: blur(15px);
+
+    position: relative;
+    z-index: 10;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+}
+
+.logo-icon {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 12px;
+
+    background: linear-gradient(
+        135deg,
+        #6366f1,
+        #06b6d4
+    );
+
+    box-shadow:
+        0 8px 25px rgba(99, 102, 241, 0.25);
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+.nav-links a {
+    color: #cbd5e1;
+    text-decoration: none;
+
+    font-size: 14px;
+    font-weight: 500;
+
+    transition: all 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #ffffff;
+}
+
+.login-btn {
+    padding: 10px 20px;
+
+    border-radius: 10px;
+
+    background: rgba(255, 255, 255, 0.08);
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+
+    transition: all 0.3s ease;
+}
+
+.login-btn:hover {
+    background: rgba(99, 102, 241, 0.2);
+    border-color: rgba(129, 140, 248, 0.5);
+}
+
+/* ================================
+   HERO SECTION
+   ================================ */
+
+.hero {
+    width: 86%;
+    max-width: 1200px;
+
+    margin: 80px auto;
+
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+
+    gap: 60px;
+
+    align-items: center;
+}
+
+/* ================================
+   BADGE
+   ================================ */
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 9px 15px;
+
+    border-radius: 50px;
+
+    background: rgba(99, 102, 241, 0.12);
+
+    border: 1px solid rgba(129, 140, 248, 0.25);
+
+    color: #c7d2fe;
+
+    font-size: 13px;
+
+    margin-bottom: 22px;
+}
+
+.badge i {
+    color: #818cf8;
+}
+
+/* ================================
+   MAIN HEADING
+   ================================ */
+
+h1 {
+    font-size: clamp(42px, 5vw, 68px);
+
+    line-height: 1.05;
+
+    letter-spacing: -2px;
+
+    margin-bottom: 24px;
+}
+
+h1 span {
+    background: linear-gradient(
+        90deg,
+        #818cf8,
+        #22d3ee
+    );
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* ================================
+   HERO DESCRIPTION
+   ================================ */
+
+.hero-text {
+    color: #94a3b8;
+
+    font-size: 17px;
+
+    line-height: 1.8;
+
+    max-width: 650px;
+
+    margin-bottom: 32px;
+}
+
+/* ================================
+   UPLOAD CARD
+   ================================ */
+
+.upload-card {
+    position: relative;
+
+    padding: 34px;
+
+    border-radius: 24px;
+
+    background: rgba(15, 23, 42, 0.72);
+
+    border: 1px solid rgba(255, 255, 255, 0.10);
+
+    box-shadow:
+        0 25px 70px rgba(0, 0, 0, 0.35);
+
+    backdrop-filter: blur(20px);
+
+    transition: all 0.3s ease;
+}
+
+.upload-card:hover {
+    transform: translateY(-5px);
+
+    border-color: rgba(129, 140, 248, 0.3);
+
+    box-shadow:
+        0 30px 80px rgba(0, 0, 0, 0.45);
+}
+
+.upload-card h2 {
+    margin-bottom: 8px;
+
+    font-size: 24px;
+}
+
+.upload-card > p {
+    color: #94a3b8;
+
+    font-size: 13px;
+
+    margin-bottom: 25px;
+}
+
+/* ================================
+   DROP AREA
+   ================================ */
+
+.drop-area {
+    display: block;
+
+    border: 2px dashed rgba(129, 140, 248, 0.45);
+
+    border-radius: 18px;
+
+    padding: 35px 20px;
+
+    text-align: center;
+
+    cursor: pointer;
+
+    transition: all 0.3s ease;
+}
+
+.drop-area:hover {
+    background: rgba(99, 102, 241, 0.08);
+
+    border-color: #818cf8;
+
+    transform: scale(1.01);
+}
+
+/* ================================
+   UPLOAD ICON
+   ================================ */
+
+.upload-icon {
+    width: 65px;
+    height: 65px;
+
+    margin: 0 auto 18px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 18px;
+
+    background: rgba(99, 102, 241, 0.15);
+
+    color: #818cf8;
+
+    font-size: 27px;
+
+    transition: all 0.3s ease;
+}
+
+.drop-area:hover .upload-icon {
+    transform: translateY(-5px);
+
+    background: rgba(99, 102, 241, 0.25);
+}
+
+/* ================================
+   UPLOAD TEXT
+   ================================ */
+
+.drop-area h3 {
+    margin-bottom: 8px;
+
+    font-size: 16px;
+}
+
+.drop-area span {
+    color: #64748b;
+
+    font-size: 12px;
+}
+
+/* Hide file input */
+
+input[type="file"] {
+    display: none;
+}
+
+/* Selected file */
+
+.file-name {
+    color: #22d3ee;
+
+    margin-top: 15px;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    word-break: break-word;
+}
+
+/* ================================
+   ANALYZE BUTTON
+   ================================ */
+
+.analyze-btn {
+    width: 100%;
+
+    border: none;
+
+    padding: 15px;
+
+    margin-top: 20px;
+
+    border-radius: 12px;
+
+    color: white;
+
+    font-size: 15px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    background:
+        linear-gradient(
+            135deg,
+            #6366f1,
+            #06b6d4
+        );
+
+    box-shadow:
+        0 10px 25px rgba(99, 102, 241, 0.20);
+
+    transition: all 0.3s ease;
+}
+
+.analyze-btn:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 15px 35px rgba(99, 102, 241, 0.35);
+}
+
+.analyze-btn:active {
+    transform: translateY(0);
+}
+
+/* ================================
+   FEATURES
+   ================================ */
+
+.features {
+    width: 86%;
+    max-width: 1200px;
+
+    margin: 0 auto 80px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 20px;
+}
+
+.feature {
+    padding: 25px;
+
+    border-radius: 18px;
+
+    background: rgba(15, 23, 42, 0.55);
+
+    border: 1px solid rgba(255, 255, 255, 0.07);
+
+    transition: all 0.3s ease;
+}
+
+.feature:hover {
+    transform: translateY(-6px);
+
+    background: rgba(15, 23, 42, 0.75);
+
+    border-color: rgba(129, 140, 248, 0.25);
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.25);
+}
+
+.feature i {
+    color: #818cf8;
+
+    font-size: 22px;
+
+    margin-bottom: 15px;
+}
+
+.feature h3 {
+    margin-bottom: 8px;
+
+    font-size: 16px;
+}
+
+.feature p {
+    color: #94a3b8;
+
+    font-size: 13px;
+
+    line-height: 1.6;
+}
+
+/* ================================
+   RESPONSIVE DESIGN
+   ================================ */
+
+@media (max-width: 900px) {
+
+    .hero {
+        grid-template-columns: 1fr;
+
+        margin-top: 50px;
+
+        gap: 40px;
+    }
+
+    .features {
+        grid-template-columns: 1fr;
+    }
+
+    .nav-links a:not(.login-btn) {
+        display: none;
+    }
+}
+
+/* ================================
+   MOBILE
+   ================================ */
+
+@media (max-width: 600px) {
+
+    nav {
+        padding: 18px 5%;
+    }
+
+    .hero {
+        width: 90%;
+
+        margin: 45px auto;
+    }
+
+    h1 {
+        font-size: 42px;
+
+        letter-spacing: -1.5px;
+    }
+
+    .hero-text {
+        font-size: 15px;
+    }
+
+    .upload-card {
+        padding: 24px;
+    }
+
+    .features {
+        width: 90%;
+    }
+
+    .logo {
+        font-size: 19px;
+    }
+
+    .logo-icon {
+        width: 38px;
+        height: 38px;
+    }
+}
+
+/* ================================
+   PAGE ANIMATION
+   ================================ */
+
+.hero > div:first-child {
+    animation: fadeUp 0.8s ease forwards;
+}
+
+.upload-card {
+    animation: fadeUp 0.9s ease forwards;
+}
+
+.feature {
+    animation: fadeUp 1s ease forwards;
+}
+
+@keyframes fadeUp {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
